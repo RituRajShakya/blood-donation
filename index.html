@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blood Donation Management</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #b30000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #800000;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #ffe5e5;
+        }
+
+        .hero h2 {
+            color: #b30000;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #b30000;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #b30000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #800000;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .donor {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 6px;
+            background-color: #fffafa;
+        }
+
+        .donor h3 {
+            color: #800000;
+            margin-bottom: 10px;
+        }
+
+        .donor p {
+            margin: 8px 0;
+        }
+
+        .blood {
+            color: #b30000;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        footer {
+            background-color: #800000;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🩸 Blood Donation Management System</h1>
+    <p>Donate Blood • Save Lives</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#register">Register</a>
+    <a href="#donors">Find Donor</a>
+</nav>
+
+<section class="hero" id="home">
+    <h2>Every Drop Counts</h2>
+    <p>Register as a blood donor and help someone in need.</p>
+</section>
+
+<div class="container">
+
+    <!-- Donor Registration Form -->
+    <div class="card" id="register">
+
+        <h2>Donor Registration</h2>
+
+        <form id="donorForm">
+
+            <label for="name">Full Name</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required
+            >
+
+            <label for="age">Donor Age</label>
+            <input
+                type="number"
+                id="age"
+                placeholder="Enter your age"
+                min="18"
+                max="65"
+                required
+            >
+
+            <label for="phone">Phone Number</label>
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter 10 digit phone number"
+                pattern="[0-9]{10}"
+                required
+            >
+
+            <label for="bloodGroup">Blood Group</label>
+            <select id="bloodGroup" required>
+                <option value="">Select Blood Group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+
+            <label for="address">Permanent Address</label>
+            <textarea
+                id="address"
+                placeholder="Enter your permanent address"
+                required
+            ></textarea>
+
+            <button type="submit">Register as Donor</button>
+
+        </form>
+
+    </div>
+
+    <!-- Search Donors -->
+    <div class="card" id="donors">
+
+        <h2>Find Blood Donor</h2>
+
+        <div class="search-box">
+
+            <label for="searchBlood">Search by Blood Group</label>
+
+            <select id="searchBlood">
+                <option value="">All Blood Groups</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+
+            <button onclick="searchDonors()">Search</button>
+
+        </div>
+
+        <div id="donorList"></div>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Blood Donation Management System</p>
+</footer>
+
+<script>
+
+    // Get existing donors from localStorage
+    let donors = JSON.parse(localStorage.getItem("donors")) || [];
+
+    // Donor registration
+    document.getElementById("donorForm").addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        let name = document.getElementById("name").value.trim();
+        let age = Number(document.getElementById("age").value);
+        let phone = document.getElementById("phone").value.trim();
+        let bloodGroup = document.getElementById("bloodGroup").value;
+        let address = document.getElementById("address").value.trim();
+
+        // Age validation
+        if (age < 18 || age > 65) {
+            alert("Please enter a donor age between 18 and 65.");
+            return;
+        }
+
+        let donor = {
+            name: name,
+            age: age,
+            phone: phone,
+            bloodGroup: bloodGroup,
+            address: address
+        };
+
+        donors.push(donor);
+
+        // Save donors in localStorage
+        localStorage.setItem("donors", JSON.stringify(donors));
+
+        alert("Donor registered successfully!");
+
+        // Clear the form
+        document.getElementById("donorForm").reset();
+
+        // Refresh donor list
+        displayDonors();
+    });
+
+    // Display donors
+    function displayDonors(list = donors) {
+
+        let donorList = document.getElementById("donorList");
+
+        donorList.innerHTML = "";
+
+        if (list.length === 0) {
+            donorList.innerHTML = "<p>No donors found.</p>";
+            return;
+        }
+
+        list.forEach(function(donor) {
+
+            donorList.innerHTML += `
+                <div class="donor">
+
+                    <h3>${donor.name}</h3>
+
+                    <p>
+                        Age:
+                        <strong>${donor.age} years</strong>
+                    </p>
+
+                    <p>
+                        Blood Group:
+                        <span class="blood">
+                            ${donor.bloodGroup}
+                        </span>
+                    </p>
+
+                    <p>📞 ${donor.phone}</p>
+
+                    <p>📍 ${donor.address}</p>
+
+                </div>
+            `;
+        });
+    }
+
+    // Search donors by blood group
+    function searchDonors() {
+
+        let blood = document.getElementById("searchBlood").value;
+
+        if (blood === "") {
+            displayDonors();
+            return;
+        }
+
+        let result = donors.filter(function(donor) {
+            return donor.bloodGroup === blood;
+        });
+
+        displayDonors(result);
+    }
+
+    // Display donors when the page loads
+    displayDonors();
+
+</script>
+
+</body>
+</html>
